@@ -12,8 +12,6 @@ def start_spark_sesion():
     spark=PysparkSession()
 
 
-
-
 @app.route("/")
 def index():
     return {'status':'succesfully connected to data-warehouse'}

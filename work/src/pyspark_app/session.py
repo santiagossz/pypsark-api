@@ -1,5 +1,4 @@
-import os
-from os.path import abspath
+from os import getenv
 
 import findspark 
 findspark.init() 
@@ -19,13 +18,17 @@ class PysparkSession(Orders,TopRestaurants):
 
         """
 
-        os.environ['PYSPARK_SUBMIT_ARGS']='--driver-memory 8G --executor-memory 8G pyspark-shell'
+        self.SPARK_WAREHOUSE = getenv('SPARK_WAREHOUSE')
+
+        print('----------START CREATION OF SPARK SESSION----------')
+
         self.spark=SparkSession.builder.appName("ETL pipeline")\
-        .config("spark.sql.warehouse.dir", abspath('data/spark-warehouse'))\
-        .config('spark.driver.extraJavaOptions',f'-Dderby.system.home={abspath("data/catalog")}')\
+        .config("spark.sql.warehouse.dir", self.SPARK_WAREHOUSE)\
+        .config('spark.driver.extraJavaOptions',f'-Dderby.system.home=data/catalog')\
         .config("spark.io.encryption.enabled",True)\
+        .config('spark.acls.enable',True)\
         .enableHiveSupport().getOrCreate()
 
-        df=self.spark.read.parquet('data/spark-warehouse/order')
+        df=self.spark.read.parquet(f'{self.SPARK_WAREHOUSE}/order')
         df.createOrReplaceTempView("order")
 
