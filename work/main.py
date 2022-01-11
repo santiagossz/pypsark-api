@@ -1,4 +1,4 @@
-from work.src.app import app
+from src.app import app
 
 
 

@@ -23,12 +23,12 @@ class PysparkSession(Orders,TopRestaurants):
         print('----------START CREATION OF SPARK SESSION----------')
 
         self.spark=SparkSession.builder.appName("ETL pipeline")\
-        .config("spark.sql.warehouse.dir", self.SPARK_WAREHOUSE)\
+        .config("spark.sql.warehouse.dir", 'data/spark-warehouse')\
         .config('spark.driver.extraJavaOptions',f'-Dderby.system.home=data/catalog')\
         .config("spark.io.encryption.enabled",True)\
         .config('spark.acls.enable',True)\
         .enableHiveSupport().getOrCreate()
 
-        df=self.spark.read.parquet(f'{self.SPARK_WAREHOUSE}/order')
+        df=self.spark.read.parquet(f'data/spark-warehouse/order')
         df.createOrReplaceTempView("order")
 
