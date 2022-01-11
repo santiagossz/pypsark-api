@@ -2,7 +2,7 @@
 
 ## 1st Case: API development
 
-This is my proposed API  [iFood Engineer Test](https://github.com/ifood/ifood-data-architect-test), to serve two endpoints to return the following:
+This is my proposed API  [iFood Engineer Test](https://github.com/wiflore/ifood-data-engineering-test.git), to serve two endpoints to return the following:
 
 
   * Count of orders per day for each city and state in our database
