@@ -5,8 +5,8 @@ findspark.init()
 from pyspark.sql import SparkSession
 
 
-from work.src.endpoints.orders import Orders
-from work.src.endpoints.restaurants import TopRestaurants
+from src.endpoints.orders import Orders
+from src.endpoints.restaurants import TopRestaurants
 
 class PysparkSession(Orders,TopRestaurants):
 

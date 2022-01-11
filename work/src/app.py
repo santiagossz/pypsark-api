@@ -5,6 +5,7 @@ from .endpoints.orders import Orders
 
 app = Flask(__name__)
 
+####check this
 @app.before_first_request
 def start_spark_sesion():
     global spark
