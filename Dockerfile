@@ -15,5 +15,4 @@ ENV SPARK_WAREHOUSE=data/spark-warehouse
 VOLUME /work:/home/jovyan/work
 
 ## jupyter notebook configuration
-# CMD ["jupyter", "notebook", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''"]
-CMD [ "python3", "work/main.py" ]
+CMD ["jupyter", "notebook", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''"]
