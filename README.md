@@ -29,9 +29,12 @@ pull the docker image from docker hub
 
 run the image 
 
-`docker run -it  -p 8080:5000 santiagossz/ifood:api  
+`docker run -p 8888:8888 -d --name api santiagossz/ifood:api
 `
 
+execute the python script to complete the etl
+
+`docker exec -it api python /home/jovyan/work/main.py`
 
 Note: Dpending on your machine resources, the docker image pull may take some time (As the data warehouse was included - for not having to download & store 
 the data, as it will take longer )
@@ -45,3 +48,10 @@ Before the first request to the API, a spark session will start.
 - restaurants (http://localhost:8080/customer-top-restaurants)
 
 You may use an API platform like Insomia/Postman to make the GET requests and get the respective JSON files
+
+Testing
+Open the following link localhost:8888 (http://localhost:8888/)
+
+in the folder data/ you will see the spark-warehouse (data) & catalog (metadata)
+
+Open the file work/test/test.ipynb to test the successful api queries
