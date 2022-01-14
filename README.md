@@ -49,6 +49,7 @@ chek the status of the [API](http://localhost:5000/)
 - [restaurants](http://localhost:5000/customer-top-restaurants)
 
 You may use an API platform like Insomia/Postman to make the GET requests and get the respective JSON files
+Note: Please verify the memory consumption of docker in your machine. As it will kill the spark process the restaurants endpoint if there is no enought memory. 
 
 Testing
 Open the following link [localhost:8888](http://localhost:8888/)
