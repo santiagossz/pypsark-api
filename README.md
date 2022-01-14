@@ -40,18 +40,19 @@ Note: Dpending on your machine resources, the docker image pull may take some ti
 the data, as it will take longer )
 
 Before the first request to the API, a spark session will start.
+chek the status of the [API](http://172.17.0.2:5000)
 
  
 ## endpoints 
 
-- orders (http://localhost:8080/orders)
-- restaurants (http://localhost:8080/customer-top-restaurants)
+- [orders](http://172.17.0.2:5000/orders)
+- [restaurants](http://172.17.0.2/:5000/customer-top-restaurants)
 
 You may use an API platform like Insomia/Postman to make the GET requests and get the respective JSON files
 
 Testing
-Open the following link localhost:8888 (http://localhost:8888/)
+Open the following link [localhost:8888](http://localhost:8888/)
 
-in the folder data/ you will see the spark-warehouse (data) & catalog (metadata)
+in the folder data/ you will see the spark-warehouse (data) 
 
 Open the file work/test/test.ipynb to test the successful api queries
