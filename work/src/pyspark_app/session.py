@@ -1,5 +1,4 @@
-from os import getenv
-
+import os
 import findspark 
 findspark.init() 
 from pyspark.sql import SparkSession
@@ -17,18 +16,15 @@ class PysparkSession(Orders,TopRestaurants):
         start a new pyspark session 
 
         """
-
-        self.SPARK_WAREHOUSE = getenv('SPARK_WAREHOUSE')
-
+        
         print('----------START CREATION OF SPARK SESSION----------')
 
-        self.spark=SparkSession.builder.appName("ETL pipeline")\
-        .config("spark.sql.warehouse.dir", 'data/spark-warehouse')\
-        .config('spark.driver.extraJavaOptions',f'-Dderby.system.home=data/catalog')\
-        .config("spark.io.encryption.enabled",True)\
-        .config('spark.acls.enable',True)\
-        .enableHiveSupport().getOrCreate()
+        self.spark=SparkSession.builder.appName("API").getOrCreate()
+        
 
-        df=self.spark.read.parquet(f'data/spark-warehouse/order')
-        df.createOrReplaceTempView("order")
+        files=['restaurant','consumer','order']
+        for file in files:
+            print(f'Loading table {file}----------')
+            df=self.spark.read.parquet(f'data/spark-warehouse/{file}')
+            df.createOrReplaceTempView(file)
 

@@ -6,6 +6,7 @@ class TopRestaurants():
         super().__init__()
 
     def customer_top_restaurants(self):
+        print('----------COUNT OF TOP RESTAURANTS PER CONSUMER----------')
         customer_top10_restaurants=self.spark.sql("""
         with customer_orders as (
             select c.customer_id,c.customer_name,o.merchant_id
@@ -34,4 +35,4 @@ class TopRestaurants():
         json_response=customer_top10_restaurants.toJSON().collect()
 
         
-        return json.dumps([json.loads(x) for x in json_response])
+        return [json.loads(x) for x in json_response]

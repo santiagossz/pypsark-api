@@ -5,6 +5,7 @@ class Orders():
         super().__init__()
 
     def orders_per_day(self):
+        print('----------COUNT OF ORDERS PER DAY PER CITY/STATE----------')
         orders=self.spark.sql("""
         select  delivery_address_state,delivery_address_city, date(order_created_at), count(*) as num_orders
         from order 
@@ -14,4 +15,4 @@ class Orders():
         json_response=orders.toJSON().collect()
 
         
-        return json.dumps([json.loads(x) for x in json_response])
+        return [json.loads(x) for x in json_response]
