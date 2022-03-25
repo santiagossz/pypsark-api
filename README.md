@@ -31,11 +31,7 @@ run the image to deploy the API container
 
 `docker run -it -p  5000:5000 --name api santiagossz/ifood:api python /home/jovyan/work/main.py --host "localhost"`
 
-<<<<<<< HEAD
-execute the python script to deploy the API
-=======
 run the image to deploy the test cotainer
->>>>>>> 54e1b5eadfb38ecb3ebcc027329eb29ceaac0f45
 
 `docker run -p 8888:8888 -d --name test santiagossz/ifood:api
 `
@@ -49,13 +45,8 @@ chek the status of the [API](http://localhost:5000/)
  
 ## endpoints 
 
-<<<<<<< HEAD
-- orders (http://localhost:5000/orders)
-- restaurants (http://localhost:5000/customer-top-restaurants)
-=======
 - [orders](http://localhost:5000/orders)
 - [restaurants](http://localhost:5000/customer-top-restaurants)
->>>>>>> 54e1b5eadfb38ecb3ebcc027329eb29ceaac0f45
 
 You may use an API platform like Insomia/Postman to make the GET requests and get the respective JSON files
 Note: Please verify the memory consumption of docker in your machine. As it will kill the spark process the restaurants endpoint if there is no enought memory. 
